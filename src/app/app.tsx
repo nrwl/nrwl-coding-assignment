@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { firstValueFrom } from "rxjs";
+
 import "./app.css";
 import { BackendService, Ticket } from "../backend";
 
@@ -13,7 +15,7 @@ const App = ({ backend }: AppProps) => {
   // that is easier to work with. It's up to you.
   useEffect(() => {
     const fetchData = async () => {
-      const result = await backend.tickets().toPromise();
+      const result = await firstValueFrom(backend.tickets());
       setTickets(result);
     };
     fetchData();
@@ -30,7 +32,7 @@ const App = ({ backend }: AppProps) => {
       <h2>Tickets</h2>
       {tickets ? (
         <ul>
-          {tickets.map(t => (
+          {tickets.map((t) => (
             <li key={t.id}>
               Ticket: {t.id}, {t.description}
             </li>

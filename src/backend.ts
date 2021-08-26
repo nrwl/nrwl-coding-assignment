@@ -28,14 +28,14 @@ export class BackendService {
       id: 0,
       description: "Install a monitor arm",
       assigneeId: 111,
-      completed: false
+      completed: false,
     },
     {
       id: 1,
       description: "Move the desk to the new location",
       assigneeId: 111,
-      completed: false
-    }
+      completed: false,
+    },
   ];
 
   storedUsers: User[] = [{ id: 111, name: "Victor" }];
@@ -43,12 +43,12 @@ export class BackendService {
   lastId = 1;
 
   private findTicketById = (id: number) => {
-    const found = this.storedTickets.find(ticket => ticket.id === +id);
+    const found = this.storedTickets.find((ticket) => ticket.id === +id);
     if (found) return found;
     throw new Error(`Ticket (id=${id}) not found`);
   };
   private findUserById = (id: number) =>
-    this.storedUsers.find(user => user.id === +id);
+    this.storedUsers.find((user) => user.id === +id);
 
   tickets() {
     return of(this.storedTickets).pipe(delay(randomDelay()));
@@ -71,7 +71,7 @@ export class BackendService {
       id: ++this.lastId,
       description: payload.description,
       assigneeId: null,
-      completed: false
+      completed: false,
     };
 
     return of(newTicket).pipe(
