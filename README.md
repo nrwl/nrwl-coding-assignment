@@ -1,4 +1,4 @@
-# Coding Assignment
+# Coding assignment
 
 The goal of this assignment is to showcase your ability to develop features and your coding style. Due to the time
 constraint you will have to prioritize what you work on, and have to try and balance cleanliness with just getting it
@@ -11,27 +11,34 @@ share the results.
 The most important part of the interview will come after this one, when we look at the app together, talk about the
 decisions you have made, etc..
 
-## Getting Started
+## Getting started
 
-_Do not fork_ this repo. Instead, use
-the [Download ZIP](https://codeload.github.com/nrwl/nrwl-coding-assignment-react/zip/refs/heads/main) link.
+| ℹ️ We provide both [Angular](./apps/angular-client) and [React](./apps/react-client) implementations. Please only choose one to work on. |
+| ---------------------------------------------------------------------------------------------------------------------------------------- |
+
+⚠️ Don't fork this repo. Instead, use
+the [Download ZIP](https://codeload.github.com/nrwl/nrwl-coding-assignment/zip/refs/heads/main) link.
 
 ```bash
-curl https://codeload.github.com/nrwl/nrwl-coding-assignment-react/zip/refs/heads/main --output nrwl-coding-assignment-react.zip
-unzip nrwl-coding-assignment-react.zip
-cd nrwl-coding-assignment-react-main
+curl https://codeload.github.com/nrwl/nrwl-coding-assignment/zip/refs/heads/main --output nrwl-coding-assignment.zip
+unzip nrwl-coding-assignment.zip
+cd nrwl-coding-assignment-main
 ```
 
-Then install the packages and you're good to go!
+Then install the packages, and you're good to go!
 
 ```bash
 yarn
 
-# run app
-yarn start
+# run app (angular)
+yarn start:angular
+
+# run app (react)
+yarn start:react
 
 # run tests
-yarn test
+yarn test:angular
+yarn test:react
 ```
 
 ## Ticketing managing application
@@ -43,18 +50,15 @@ Build a ticket managing app, where the user can _add_, _filter_ (by status), _as
   1. the list screen and
   2. the details screen.
 
-  Please use the React Router to manage the transitions between them.
+- You can use any state management library you want (or none at all). e.g. Redux, NgRx, XState, MobX, etc.
 
-- RxJS is used for the backend service. Knowledge of RxJS is a bonus, but we understand that not all React developers
-  are familiar with it, so you are free to convert observables to promises if you choose to.
+- Write a couple of tests. The goal here is not to build a production-quality app, so don't test every single detail. Two or three tests should be good enough.
 
-- You can use any state management library you want (or none at all). e.g. Redux, MobX, or just React context.
+### Server / API
 
-- Write a couple of tests. The goal here is not to build a production-quality app, so don't test every single detail.
-  Two or three tests should be good enough.
+The server application is available at http://localhost:4200/api when you run `yarn start:[react|angular]`.
 
-- Don't forget about error handling and race conditions. The API server has a random delay. If you bump it up to say 10
-  seconds, would the app still work correctly?
+Please see the [API docs here](./apps/server/README.md).
 
 ## Submitting your solution
 

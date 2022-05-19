@@ -1,0 +1,79 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/react-client/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "swc",
+        "outputPath": "dist/apps/react-client",
+        "index": "apps/react-client/src/index.html",
+        "baseHref": "/",
+        "main": "apps/react-client/src/main.tsx",
+        "polyfills": "apps/react-client/src/polyfills.ts",
+        "tsConfig": "apps/react-client/tsconfig.app.json",
+        "assets": [
+          "apps/react-client/src/favicon.ico",
+          "apps/react-client/src/assets"
+        ],
+        "styles": ["apps/react-client/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-client:build",
+        "hmr": true,
+        "proxyConfig": "apps/react-client/proxy.conf.json"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-client:build:development"
+        },
+        "production": {
+          "buildTarget": "react-client:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/react-client/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/react-client"],
+      "options": {
+        "jestConfig": "apps/react-client/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
