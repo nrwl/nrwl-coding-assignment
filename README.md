@@ -11,9 +11,39 @@ share the results.
 The most important part of the interview will come after this one, when we look at the app together, talk about the
 decisions you have made, etc..
 
-## Getting started
+You have three different options to choose from for your assignment.  You only need to complete one of them:
+1. A node CLI
+2. An Angular app
+3. A React app
 
-| ℹ️ We provide both [Angular](./apps/angular-client) and [React](./apps/react-client) implementations. Please only choose one to work on. |
+## Node CLI
+
+| ℹ️ Please only choose one assignment to work on.  Either this node CLI, the [Angular](./apps/angular-client) client or the [React](./apps/react-client) client. |
+| ---------------------------------------------------------------------------------------------------------------------------------------- |
+
+### Requirements
+​
+Please write a CLI in javascript/typescript.  You are free to use any open source packages you wish.  You can create your own repository from scratch or use this one.
+​
+### Metrics Gathering CLI
+​
+Build a CLI to gather metrics on a git repository.  The goal is to measure how much cross collaboration there is across projects in the organization.
+​
+* The cli should take as an input a path to a git repository on your machine and perform the following calculation: count the number of contributors that have made commits to multiple projects.  For this exercise, projects are defined as subfolders inside the root level "packages" folder.
+    For example, if a repo has folders A, B and C inside the packages folder and user1 has contributed to A and B, user2 has contributed to B and C and user3 has only contributed to C, the output of this command should be 2.
+* The output of this calculation should be placed in a section in the repository's root level `README.md` file.  The section should be created if it doesn't exist and updated if it does.
+* Write a couple of tests. The goal here is not to build a production-quality app, so don't test every single detail.
+  Two or three tests should be good enough.
+* Don't forget about error handling and performance. What if the repo isn't set up the way you expect?  What if the repo has 1000 contributors?
+
+An example repo to test against is set up here: https://github.com/nrwl/count-contributors-sample
+
+## Angular or React App
+
+| ℹ️ Please only choose one assignment to work on.  Either the node CLI described above, the [Angular](./apps/angular-client) client or the [React](./apps/react-client) client. |
+| ---------------------------------------------------------------------------------------------------------------------------------------- |
+
+| ℹ️  Please only choose one to work on. |
 | ---------------------------------------------------------------------------------------------------------------------------------------- |
 
 ⚠️ Don't fork this repo. Instead, use
