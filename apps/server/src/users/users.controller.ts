@@ -1,4 +1,5 @@
 import { Controller, Get, NotFoundException } from '@nestjs/common';
+import { randomDelay } from '../utils/random-delay';
 import { UsersService } from './users.service';
 
 @Controller('users')
@@ -12,6 +13,7 @@ export class UsersController {
 
   @Get()
   async getUser(id: number) {
+    await randomDelay();
     const user = await this.usersService.user(id);
     if (user) return user;
     throw new NotFoundException();
