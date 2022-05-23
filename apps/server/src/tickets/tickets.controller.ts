@@ -12,6 +12,7 @@ import {
   Body,
   HttpCode,
 } from '@nestjs/common';
+import { randomDelay } from '../utils/random-delay';
 import { TicketsService } from './tickets.service';
 
 @Controller('tickets')
@@ -20,11 +21,13 @@ export class TicketsController {
 
   @Get()
   async getTickets() {
+    await randomDelay();
     return this.ticketsService.tickets();
   }
 
   @Get()
   async getTicket(id: number) {
+    await randomDelay();
     const ticket = await this.ticketsService.ticket(id);
     if (ticket) return ticket;
     throw new NotFoundException();
@@ -32,6 +35,7 @@ export class TicketsController {
 
   @Post()
   async createTicket(@Body() createDto: { description: string }) {
+    await randomDelay();
     return this.ticketsService.newTicket(createDto);
   }
 
@@ -41,6 +45,7 @@ export class TicketsController {
     @Param('ticketId') ticketId: string,
     @Param('userId') userId: string
   ) {
+    await randomDelay();
     const success = await this.ticketsService.assign(
       Number(ticketId),
       Number(userId)
@@ -51,6 +56,7 @@ export class TicketsController {
   @Put(':id/complete')
   @HttpCode(204)
   async markAsComplete(@Param('id') ticketId: string) {
+    await randomDelay();
     const success = await this.ticketsService.complete(Number(ticketId), true);
     if (!success) throw new UnprocessableEntityException();
   }
@@ -58,6 +64,7 @@ export class TicketsController {
   @Delete(':id/complete')
   @HttpCode(204)
   async markAsIncomplete(@Param('id') ticketId: string) {
+    await randomDelay();
     const success = await this.ticketsService.complete(Number(ticketId), false);
     if (!success) throw new UnprocessableEntityException();
   }
